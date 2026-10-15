@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PathLab - Path Planning</title>
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- Leaflet Draw CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+    >
+
+    <!-- CSS PathLab -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>PathLab</h1>
+        <p>Eksperimen algoritma pencarian rute pada jaringan jalan</p>
+    </header>
+
+    <main>
+        <section class="controls">
+            <h2>Pengaturan Rute</h2>
+
+            <!-- Algoritma -->
+            <label for="algorithm">Algoritma</label>
+            <select id="algorithm">
+                <option value="dijkstra">Dijkstra</option>
+                <option value="astar">A*</option>
+                <option value="BFS">BFS</option>
+            </select>
+
+            <!-- Custom Map Area -->
+            <div class="area-panel">
+                <h3>Custom Map Area</h3>
+
+                <p>
+                    Gambar kotak pada peta untuk menentukan wilayah
+                    perhitungan rute.
+                </p>
+                
+
+                <button id="applyAreaBtn" type="button">
+                    Terapkan Area
+                </button>
+                <div id="downloadProgress" class="progress-panel" hidden>
+                    <div class="progress-heading">
+                        <span id="progressMessage">Menyiapkan unduhan...</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                
+                    <div class="progress-track">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                </div>
+                
+                <button id="deleteGraphBtn" type="button">
+                    Hapus Graf
+                </button>
+
+                <div id="offlineDataPanel">
+                    <h3>Data Jalan Offline</h3>
+                
+                    <input
+                        type="file"
+                        id="offlineGraphFile"
+                        accept=".graphml"
+                    />
+                
+                    <button id="loadOfflineBtn" type="button">
+                        Muat Data Offline
+                    </button>
+                
+                    <p id="offlineStatus">
+                        Pilih file .graphml dari komputer.
+                    </p>
+                </div>
+                
+                <button id="clearAreaBtn" type="button">
+                    Hapus Kotak
+                </button>
+
+                <p id="areaStatus" aria-live="polite">
+                    Belum ada area dipilih.
+                </p>
+            </div>
+
+            <!-- Titik awal dan tujuan -->
+            <p id="startText">Titik awal: belum dipilih</p>
+            <button id="startBtn" type="button">
+                Pilih titik awal
+            </button>
+
+            <p id="goalText">Titik tujuan: belum dipilih</p>
+            <button id="goalBtn" type="button">
+                Pilih titik tujuan
+            </button>
+
+            <!-- Kontrol rute -->
+            <div class="buttons">
+                <button id="routeBtn" type="button">
+                    Cari rute
+                </button>
+
+                <button id="resetBtn" type="button">
+                    Reset
+                </button>
+            </div>
+
+            <p id="status" role="status" aria-live="polite">
+                Pilih dan terapkan area terlebih dahulu.
+            </p>
+
+            <!-- Hasil pencarian -->
+            <h3>Hasil pencarian</h3>
+
+            <p id="distance">Jarak: —</p>
+            <p id="visited">Node pada rute: —</p>
+            <p id="duration">Waktu komputasi: —</p>
+        </section>
+
+        <!-- Peta -->
+        <section class="map-section">
+            <div
+                id="map"
+                aria-label="Peta untuk memilih wilayah dan titik rute"
+            ></div>
+        </section>
+    </main>
+
+    <!-- Urutan script harus seperti ini -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
