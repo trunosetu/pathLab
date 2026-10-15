@@ -1,6 +1,6 @@
 # PathLab
 
-**PathLab** is a web-based pathfinding application that uses road network data to calculate and visualize routes between locations.
+**PathLab** is a web-based pathfinding application that uses road network data to calculate and visualize routes between locations. 
 <img width="951" height="960" alt="Screenshot 2026-10-15 125149" src="https://github.com/user-attachments/assets/faf4842f-d68d-4c2c-9040-7fea3705e5e1" />
 
 ## Features
@@ -53,6 +53,7 @@ pathLab/
 ## Status
 
 PathLab is an ongoing project focused on exploring and comparing pathfinding algorithms on real-world road networks.
+since this is experimental and relaying on freemaps problems/failure download could occurred.
 
 ## License
 
